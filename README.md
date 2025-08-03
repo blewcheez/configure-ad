@@ -3,8 +3,7 @@
 </p>
 
 <h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
-
+In this tutorial, I'm going to be outlining the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 <h2> Setting up a Domain Controller in Azure</h2>
 
@@ -22,33 +21,146 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>High-Level Deployment and Configuration Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+- Setting Domain and Client VM
+- Installing Active Directory
+- Deployment
+- Creating users with PowerShell
+- Group policy
 
-<h2>Deployment and Configuration Steps</h2>
+<h3 align="center"> Setting up Domain and Client VM </h3>
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<h2>Step 1: Setting up the Domain Controller Virtual Machine (VM)</h2>
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+- Create a Resource Group
+
+- Create a Virtual Network and Subnet
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+  <img src="https://i.imgur.com/hnhRKQo.png" height="80%" width="80%"/>
+  <img src="https://i.imgur.com/NZC4lLW.png" height="80%" width="80%"/>
+
+- Create the Domain Controller VM (Windows Server 2022) named “DC-1”
+
+- For the Administrator Account; User: mr_admin Password: Password1
+  
+  <img src="https://i.imgur.com/tJExBRG.png" height="80%" width="80%"/>
+  <img src="https://i.imgur.com/uIxWc03.png" height="80%" width="80%"/>
+  
+- After the VM is created, set the Domain Controller’s NIC Private IP address to be static
+  
+  <img src="https://i.imgur.com/AMubBay.png" height="80%" width="80%"/>
+  <br><br/>
+  
+<h2>Step 2: Setup Client-1 in Azure</h2>
+
+- Create the Client VM (Windows 10) named “Client-1”
+
+- Within the same region and Virtual Network as DC-1
+
+- User: mr_admin Password: Password1
+  
+  <img src="https://i.imgur.com/ukR7m5G.png" height="80%" width="80%"/>  
+  <img src="https://i.imgur.com/uQec1nk.png" height="80%" width="80%"/>
+  
+- After VM is created, set Client-1’s DNS settings to DC-1’s Private IP address
+
+  <img src="https://i.imgur.com/OptjMyC.png" height="80%" width="80%"/>
+  <img src="https://i.imgur.com/xnhpmxb.png" height="80%" width="80%"/>
+  <img src="https://i.imgur.com/mRQbjmy.png" height="80%" width="80%"/>
+  
+- Restart VM
+  
+  <img src="https://i.imgur.com/NAldMlz.png" height="80%" width="80%"/>
+  
 </p>
+<br><br/> 
+
+<h2>Step 3: Ping DC-1's private IP through Client-1</h2>
+
+- Login to DC-1 using "mr_admin" and "Password1" 
+  
+- Open Windows Firewall settings as an Admin, and disable all firewalls. (this allows us to be able to ping DC-1 from Client-1)
+  
+  <img src="https://i.imgur.com/9VWmAVM.png" height="80%" width="80%"/>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  
+- Login to Client-1
+
+- Attempt to ping DC-1’s private IP address
+  
+  <img src="https://i.imgur.com/qz0hsLi.png" height="80%" width="80%"/>
+  <img src="https://i.imgur.com/ErteWLE.png" height="80%" width="80%"/>
+- You should see DC-1's private IP like so.
+<br><br/>
+- To ensure the ping succeeded
+  
+- From Client-1, open PowerShell and run ipconfig /all
+  
+- The output for the DNS settings should show DC-1’s private IP Address
+
+  <img src="https://i.imgur.com/fEqdFG0.png" height="80%" width="80%"/>
+  
 </p>
+<br><br/> 
+
+
+<h2>Step 1: </h2>
+- s
+- s
+
+<p>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>  
+</p>
+
+<br><br/> 
+
+<h2>Step 1: </h2>
+- s
+- s
+
+<p>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>  
+</p>
+
+<br><br/> 
+
+
+<h2>Step 1: </h2>
+- s
+- s
+
+<p>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>  
+</p>
+
+<br><br/> 
+
+
+<h2>Step 1: </h2>
+- s
+- s
+
+<p>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>
+  <img src="" height="80%" width="80%"/>  
+</p>
+
+<br><br/> 
+
+
+
+
+
+
 <br />
